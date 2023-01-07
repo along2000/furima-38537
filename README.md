@@ -17,15 +17,15 @@
 ## itemsテーブル
 | Column               | Type        | Options                         |
 | -------------------- | ----------- | ------------------------------- |
-| user_id              | references  | null: false, foreign_key: true  |
+| user                 | references  | null: false, foreign_key: true  |
 | name                 | string      | null: false                     |
 | text                 | text        | null: false                     |
 | price                | integer     | null: false                     |
-| category_id          | references  | null: false, foreign_key: true  |
-| status_id            | references  | null: false, foreign_key: true  |
-| delivery_charge_id   | references  | null: false, foreign_key: true  |
-| delivery_source_id   | references  | null: false, foreign_key: true  |
-| delivery_date_id     | references  | null: false, foreign_key: true  |
+| category_id          | integer     | null: false                     |
+| status_id            | integer     | null: false                     |
+| delivery_charge_id   | integer     | null: false                     |
+| delivery_source_id   | integer     | null: false                     |
+| delivery_date_id     | integer     | null: false                     |
 
 ### Association
 - belongs_to :user
@@ -40,12 +40,12 @@
 | Column                 | Type        | Options                         |
 | ---------------------- | ----------- | ------------------------------- |
 | postcode               | string      | null: false                     |
-| delivery_source_id     | references  | null: false, foreign_key: true  |
+| delivery_source_id     | integer     | null: false                     |
 | city                   | string      | null: false                     |
 | block                  | string      | null: false                     |
 | building               | string      |                                 |
 | phone_number           | string      | null: false                     |
-| order_record_id        | references  | null: false, foreign_key: true  |
+| order_record           | references  | null: false, foreign_key: true  |
 
 ### Association
 - belongs_to :order_record
@@ -54,8 +54,8 @@
 ## order_recordsテーブル
 | Column             | Type        | Options                         |
 | ------------------ | ----------- | ------------------------------- |
-| user_id            | references  | null: false, foreign_key: true  |
-| item_id            | references  | null: false, foreign_key: true  |
+| user               | references  | null: false, foreign_key: true  |
+| item               | references  | null: false, foreign_key: true  |
 
 ### Association
 - belongs_to :user
