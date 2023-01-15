@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :item do
-    name { '15年前の切手' }
+    name                  { '15年前の切手' }
     text                  { '15年前の切手です。実家の押し入れから出てきましたが、価値がわからないため出品します。' }
     price                 { '10000' }
     delivery_date_id      { '2' }
@@ -9,5 +9,9 @@ FactoryBot.define do
     category_id           { '2' }
     status_id             { '2' }
     association :user
+
+    after(:build) do |item|
+      item.image.attach(io: File.open('public/images/test_image.png'), filename: 'test_image.png')
+    end
   end
 end
