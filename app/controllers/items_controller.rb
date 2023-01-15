@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :move_to_signed_in, except: [:index]
+  before_action :authenticate_user!, except: [:index]
 
   def index
   end
@@ -24,9 +24,4 @@ class ItemsController < ApplicationController
                                  :delivery_source_id).merge(user_id: current_user.id)
   end
 
-  def move_to_signed_in
-    return if user_signed_in?
-
-    redirect_to '/users/sign_in'
-  end
 end
