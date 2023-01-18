@@ -240,8 +240,8 @@ a {
 .item-lists {
   width: 100vw;
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .item-lists>.list {
@@ -249,7 +249,6 @@ a {
   padding: 1vw;
   background-color: #FFF;
 }
-
 
 .item-img-content {
   position: relative;
