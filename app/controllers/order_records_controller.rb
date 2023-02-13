@@ -1,4 +1,5 @@
 class OrderRecordsController < ApplicationController
+  before_action :authenticate_user!
   before_action :item_set, only: [:index, :create]
 
   def index
@@ -20,6 +21,9 @@ class OrderRecordsController < ApplicationController
 
   def item_set
     @item = Item.find(params[:item_id])
+    if current_user.id == @item.user.id || @item.order_record.present?
+      redirect_to root_path
+    end
   end
 
   def order_params
