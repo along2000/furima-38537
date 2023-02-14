@@ -62,17 +62,18 @@ RSpec.describe OrderRecordPayment, type: :model do
       it '郵便番号にハイフンがないと保存できないこと' do
         @order_record_payment.postcode = 1_234_567
         @order_record_payment.valid?
-        expect(@order_record_payment.errors.full_messages).to include("Postcode 郵便番号は「3桁ハイフン4桁」の半角文字列で入力してください")
+        expect(@order_record_payment.errors.full_messages).to include('Postcode 郵便番号は「3桁ハイフン4桁」の半角文字列で入力してください')
       end
       it '都道府県が「---」だと保存できないこと' do
         @order_record_payment.delivery_source_id = 1
         @order_record_payment.valid?
-        expect(@order_record_payment.errors.full_messages).to include("Delivery source 都道府県を選択してください")
+        expect(@order_record_payment.errors.full_messages).to include('Delivery source 都道府県を選択してください')
       end
       it '都道府県が空だと保存できないこと' do
         @order_record_payment.delivery_source_id = nil
         @order_record_payment.valid?
-        expect(@order_record_payment.errors.full_messages).to include("Delivery source can't be blank", "Delivery source 都道府県を選択してください")
+        expect(@order_record_payment.errors.full_messages).to include("Delivery source can't be blank",
+                                                                      'Delivery source 都道府県を選択してください')
       end
       it '市区町村が空だと保存できないこと' do
         @order_record_payment.city = nil
@@ -92,12 +93,12 @@ RSpec.describe OrderRecordPayment, type: :model do
       it '電話番号にハイフンがあると保存できないこと' do
         @order_record_payment.phone_number = '123 - 1234 - 1234'
         @order_record_payment.valid?
-        expect(@order_record_payment.errors.full_messages).to include("Phone number 電話番号は10桁から11桁の数字のみ入力してください")
+        expect(@order_record_payment.errors.full_messages).to include('Phone number 電話番号は10桁から11桁の数字のみ入力してください')
       end
       it '電話番号が12桁以上あると保存できないこと' do
         @order_record_payment.phone_number = 12_345_678_910_123_111
         @order_record_payment.valid?
-        expect(@order_record_payment.errors.full_messages).to include("Phone number 電話番号は10桁から11桁の数字のみ入力してください")
+        expect(@order_record_payment.errors.full_messages).to include('Phone number 電話番号は10桁から11桁の数字のみ入力してください')
       end
       it 'トークンが空だと保存できないこと' do
         @order_record_payment.token = nil
