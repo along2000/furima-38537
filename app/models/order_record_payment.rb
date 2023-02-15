@@ -9,7 +9,7 @@ class OrderRecordPayment
     validates :item_id
     validates :city
     validates :block
-    validates :phone_number, format: { with: /\A[0-9]{11}\z/, message: '電話番号は10桁から11桁の数字のみ入力してください' }, allow_blank: true
+    validates :phone_number, format: { with: /\A\d{10,11}\z/, message: '電話番号は10桁から11桁の数字のみ入力してください' }, allow_blank: true
     validates :phone_number
     validates :delivery_source_id, numericality: { other_than: 1, message: '都道府県を選択してください' }
     validates :token
