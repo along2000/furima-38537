@@ -4,13 +4,11 @@ class OrderRecordPayment
 
   with_options presence: true do
     validates :postcode, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: '郵便番号は「3桁ハイフン4桁」の半角文字列で入力してください' }, allow_blank: true
-    validates :postcode
     validates :user_id
     validates :item_id
     validates :city
     validates :block
     validates :phone_number, format: { with: /\A\d{10,11}\z/, message: '電話番号は10桁から11桁の数字のみ入力してください' }, allow_blank: true
-    validates :phone_number
     validates :delivery_source_id, numericality: { other_than: 1, message: '都道府県を選択してください' }
     validates :token
   end
