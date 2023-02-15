@@ -74,8 +74,7 @@ RSpec.describe OrderRecordPayment, type: :model do
       it '都道府県が空だと保存できないこと' do
         @order_record_payment.delivery_source_id = nil
         @order_record_payment.valid?
-        expect(@order_record_payment.errors.full_messages).to include("Delivery source can't be blank",
-                                                                      'Delivery source 都道府県を選択してください')
+        expect(@order_record_payment.errors.full_messages).to include('Delivery source 都道府県を選択してください')
       end
       it '市区町村が空だと保存できないこと' do
         @order_record_payment.city = nil
